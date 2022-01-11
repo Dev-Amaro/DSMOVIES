@@ -1,19 +1,23 @@
-import {ReactComponent as GithubIcon} from './assets/img/Vector.svg';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Listing from 'pages/Listing';
+import Form from 'pages/Form';
+import Navbar from "components/Navbar";
+
 function App() {
   return (
-    <header>
-    <nav className="container">
-        <div className="dsmovie-nav-content">
-            <h1>DSMovie</h1>
-            <a href="https://github.com/Dev-Amaro" target="_blank" rel="noreferrer">
-                <div className="dsmovie-contact-container">
-                    <GithubIcon />
-                    <p className="dsmovie-contact-link">/devsuperior</p>
-                </div>
-            </a>
-        </div>
-    </nav>
-</header>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Listing />} />
+        <Route path="/form">
+          <Route path=":movieId" element={<Form />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
